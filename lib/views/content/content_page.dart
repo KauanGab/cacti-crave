@@ -1,23 +1,42 @@
+import 'package:cacti_crave/views/content/inicial_page.dart';
+import 'package:cacti_crave/views/content/profile_page.dart';
+import 'package:cacti_crave/views/content/request_page.dart';
+import 'package:cacti_crave/views/content/search_page.dart';
 import 'package:flutter/material.dart';
 
-class ContentPage extends StatelessWidget {
-  const ContentPage ({super.key});
+class ContentPage extends StatefulWidget {
+  const ContentPage({super.key});
+
+  @override
+  State<ContentPage> createState() => _ContentPageState();
+}
+
+class _ContentPageState extends State<ContentPage> {
+  int paginaAtual = 0;
+  late PageController pc;
+
+  @override
+  void initState() {
+    super.initState();
+    pc = PageController(initialPage: paginaAtual);
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
+      body: PageView(
+        controller: pc,
         children: [
           Container(
             child: Column(
               children: [
-                SizedBox(
-                  height: MediaQuery.of(context).padding.top,
-                ),
-                Text('')
+                InicialPage(),
+                SearchPage(),
+                RequestPage(),
+                ProfilePage(),
               ],
             ),
-          )
+          ),
         ],
       ),
     );
