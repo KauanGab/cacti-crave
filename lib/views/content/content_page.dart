@@ -1,6 +1,6 @@
 import 'package:cacti_crave/views/content/inicial_page.dart';
-import 'package:cacti_crave/views/content/profile_page.dart';
-import 'package:cacti_crave/views/content/request_page.dart';
+// import 'package:cacti_crave/views/content/profile_page.dart';
+// import 'package:cacti_crave/views/content/request_page.dart';
 import 'package:cacti_crave/views/content/search_page.dart';
 import 'package:flutter/material.dart';
 
@@ -23,22 +23,12 @@ class _ContentPageState extends State<ContentPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: PageView(
-        controller: pc,
-        children: [
-          Container(
-            child: Column(
-              children: [
-                InicialPage(),
-                SearchPage(),
-                RequestPage(),
-                ProfilePage(),
-              ],
-            ),
-          ),
-        ],
-      ),
+    return PageView(
+      controller: pc,
+      children: [
+        InicialPage(),
+        SearchPage(),
+      ],
     );
   }
 }
