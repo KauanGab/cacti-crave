@@ -1,6 +1,5 @@
 import 'package:cacti_crave/views/content/inicial_page.dart';
-// import 'package:cacti_crave/views/content/profile_page.dart';
-// import 'package:cacti_crave/views/content/request_page.dart';
+import 'package:cacti_crave/views/content/profile_page.dart';
 import 'package:cacti_crave/views/content/search_page.dart';
 import 'package:flutter/material.dart';
 
@@ -21,14 +20,40 @@ class _ContentPageState extends State<ContentPage> {
     pc = PageController(initialPage: paginaAtual);
   }
 
+  setPaginaAtual(pagina) {
+    setState(() {
+      paginaAtual = pagina;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    return PageView(
-      controller: pc,
-      children: [
-        InicialPage(),
-        SearchPage(),
-      ],
+    return Scaffold(
+      body: PageView(
+        controller: pc,
+        children: [InicialPage(), SearchPage(), ProfilePage()],
+        onPageChanged: setPaginaAtual,
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        unselectedItemColor: Color(0xFF474747),
+        selectedItemColor: Color(0xFF47B67E),
+        currentIndex: paginaAtual,
+        items: [
+          BottomNavigationBarItem(
+              icon: Icon(Icons.home_outlined), label: 'Início'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.search_outlined), label: 'Buscar'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.person_4_outlined), label: 'Perfil')
+        ],
+        onTap: (pagina) {
+          pc.animateToPage(
+            pagina,
+            duration: Duration(milliseconds: 400),
+            curve: Curves.linear,
+          );
+        },
+      ),
     );
   }
 }
