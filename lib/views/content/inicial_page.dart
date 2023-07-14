@@ -8,6 +8,13 @@ final List<String> imgLists = [
   'assets/images/banner4.jpeg',
 ];
 
+final List<String> listStores = [
+  'assets/images/bianca.png',
+  'assets/images/samec.png',
+  'assets/images/jsilva.png',
+  'assets/images/santana.png',
+];
+
 class InicialPage extends StatefulWidget {
   const InicialPage({Key? key}) : super(key: key);
 
@@ -91,6 +98,23 @@ class _InicialPageState extends State<InicialPage> {
                   ],
                 ),
               ),
+              SingleChildScrollView(
+                child: Column(children: [
+                  SizedBox(
+                      height: 200,
+                      child: ListView.builder(
+                        itemCount: listStores.length,
+                        scrollDirection: Axis.horizontal,
+                        itemBuilder: (context, index) => Container(
+                          height: 100,
+                          width: 100,
+                          margin: EdgeInsets.all(10),
+                          color: Colors.amber,
+                    
+                        ),
+                      ))
+                ]),
+              ),
             ],
           ),
         ],
@@ -108,4 +132,15 @@ class _InicialPageState extends State<InicialPage> {
           ),
         ),
       );
+      
+  //  Widget madeImage(String store, int index) => Container(
+  //         margin: EdgeInsets.symmetric(horizontal: 12),
+  //         child: ClipRRect(
+  //           borderRadius: BorderRadius.circular(20.0),
+  //           child: Image.network(
+  //             store,
+  //             fit: BoxFit.cover,
+  //           ),
+  //         ),
+  //       );
 }

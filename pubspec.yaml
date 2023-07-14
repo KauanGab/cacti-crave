@@ -67,7 +67,7 @@ flutter:
     - "assets/icons/"
     - "assets/icons/bottom/"
     - "assets/icons/ordenation/"
-    - "assets/"
+    - "assets/images/"
     
   fonts:
     - family: "Nunito Sans"
