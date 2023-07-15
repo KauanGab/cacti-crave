@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
@@ -9,8 +10,8 @@ final List<String> imgLists = [
 ];
 
 final List<String> listStores = [
-  'assets/images/bianca.png',
   'assets/images/samec.png',
+  'assets/images/bianca.png',
   'assets/images/jsilva.png',
   'assets/images/santana.png',
 ];
@@ -26,98 +27,111 @@ class _InicialPageState extends State<InicialPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-          Column(
-            children: [
-              SizedBox(
-                height: MediaQuery.of(context).padding.top,
-              ),
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Row(
-                      children: [
-                        Text('R.São Cristóvão, 10'),
-                        Icon(
-                          Icons.arrow_drop_down_sharp,
-                          color: Color(0xFF47B67E),
-                        ),
-                      ],
-                    ),
-                    Icon(
-                      Icons.notifications_none_sharp,
-                      color: Color(0xFF47B67E),
-                    ),
-                  ],
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Column(
+              children: [
+                SizedBox(
+                  height: MediaQuery.of(context).padding.top,
                 ),
-              ),
-              SizedBox(height: 16.0),
-              CarouselSlider.builder(
-                options: CarouselOptions(
-                  height: 150.0,
-                  // aspectRatio: 16 / 9,
-                  viewportFraction: 0.8,
-                ),
-                itemCount: imgLists.length,
-                itemBuilder: (context, index, realIndex) {
-                  final imglist = imgLists[index];
-
-                  return buildImage(imglist, index);
-                },
-              ),
-              SizedBox(height: 16.0),
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Row(
-                      children: [
-                        Text(
-                          'Últimas lojas',
-                          style: TextStyle(
-                            fontSize: 20.0,
-                            fontWeight: FontWeight.w300,
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 16.0, vertical: 8.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Row(
+                        children: [
+                          Text('R.São Cristóvão, 10'),
+                          Icon(
+                            Icons.arrow_drop_down_sharp,
+                            color: Color(0xFF47B67E),
                           ),
-                        ),
-                      ],
-                    ),
-                    Text(
-                      'Ver Mais',
-                      style: TextStyle(
-                        fontSize: 14.0,
-                        fontWeight: FontWeight.w300,
+                        ],
+                      ),
+                      Icon(
+                        Icons.notifications_none_sharp,
                         color: Color(0xFF47B67E),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
-              ),
-              SingleChildScrollView(
-                child: Column(children: [
-                  SizedBox(
-                      height: 200,
-                      child: ListView.builder(
-                        itemCount: listStores.length,
-                        scrollDirection: Axis.horizontal,
-                        itemBuilder: (context, index) => Container(
-                          height: 100,
-                          width: 100,
-                          margin: EdgeInsets.all(10),
-                          color: Colors.amber,
-                    
+                SizedBox(height: 16.0),
+                CarouselSlider.builder(
+                  options: CarouselOptions(
+                    height: 150.0,
+                    // aspectRatio: 16 / 9,
+                    viewportFraction: 0.8,
+                  ),
+                  itemCount: imgLists.length,
+                  itemBuilder: (context, index, realIndex) {
+                    final imglist = imgLists[index];
+
+                    return buildImage(imglist, index);
+                  },
+                ),
+                SizedBox(height: 16.0),
+                Padding(
+                  padding: const EdgeInsets.only(
+                      left: 16.0, right: 16.0, top: 8.0, bottom: 5.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Row(
+                        children: [
+                          Text(
+                            'Últimas lojas',
+                            style: TextStyle(
+                              fontSize: 20.0,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                        ],
+                      ),
+                      Text(
+                        'Ver Mais',
+                        style: TextStyle(
+                          fontSize: 14.0,
+                          fontWeight: FontWeight.w400,
+                          color: Color(0xFF47B67E),
                         ),
-                      ))
-                ]),
-              ),
-            ],
-          ),
-        ],
+                      ),
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 16.0, bottom: 8.0),
+                  child: SizedBox(
+                    height: 75,
+                    child: ListView.builder(
+                      itemCount: listStores.length,
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: (context, index) => SizedBox(
+                        // height: 60,
+                        // width: 111,
+                        child: Image.asset(
+                          listStores[index],
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                Text(
+                  'Lojas',
+                  style: TextStyle(
+                    fontSize: 24.0,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: GridB(),
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -126,21 +140,165 @@ class _InicialPageState extends State<InicialPage> {
         margin: EdgeInsets.symmetric(horizontal: 12),
         child: ClipRRect(
           borderRadius: BorderRadius.circular(20.0),
-          child: Image.network(
+          child: Image.asset(
             imglist,
             fit: BoxFit.fill,
           ),
         ),
       );
-      
-  //  Widget madeImage(String store, int index) => Container(
-  //         margin: EdgeInsets.symmetric(horizontal: 12),
-  //         child: ClipRRect(
-  //           borderRadius: BorderRadius.circular(20.0),
-  //           child: Image.network(
-  //             store,
-  //             fit: BoxFit.cover,
-  //           ),
-  //         ),
-  //       );
+}
+
+class GridB extends StatefulWidget {
+  const GridB({Key? key}) : super(key: key);
+
+  @override
+  State<GridB> createState() => _GridBState();
+}
+
+class _GridBState extends State<GridB> {
+  final List<Map<String, dynamic>> gridMap = [
+    {
+      "title": "Delícias do Sabor",
+      "type": " 4,6 · Japonesa",
+      "km": " · 4,1 km",
+      "images": "assets/images/amarelo.png",
+    },
+    {
+      "title": "Trattoria del Sole",
+      "type": " 4,3 · Italiana",
+      "km": " · 3,8 km",
+      "images": "assets/images/laranja.png"
+    },
+    {
+      "title": "O Pote Mágico",
+      "type": " 4,2 · Indiana",
+      "km": " · 2,5 km",
+      "images": 'assets/images/rosa.png'
+    },
+    {
+      "title": "Sabor & Arte",
+      "type": " 4,4 · Mexicana",
+      "km": " · 6,3 km",
+      "images": 'assets/images/roxo.png'
+    },
+    {
+      "title": "Bistrô Encantado",
+      "type": " 4,5 · Chinesa",
+      "km": " · 4,9 km",
+      "images": 'assets/images/verde.png'
+    },
+    {
+      "title": "Aroma do Oriente",
+      "type": " 5,0 · Brasileira",
+      "km": " · 5,7 km",
+      "images": 'assets/images/vermelho.png'
+    },
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return GridView.builder(
+      physics: const NeverScrollableScrollPhysics(),
+      shrinkWrap: true,
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 2,
+        crossAxisSpacing: 12.0,
+        mainAxisSpacing: 12.0,
+        mainAxisExtent: 280,
+      ),
+      itemCount: gridMap.length,
+      itemBuilder: (_, index) {
+        return Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(
+              16.0,
+            ),
+            color: Color.fromARGB(255, 245, 244, 244),
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(top: 5.0),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(100.0),
+                  child: Image.asset(
+                    "${gridMap.elementAt(index)['images']}",
+                    height: 170,
+                    width: double.infinity,
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "${gridMap.elementAt(index)['title']}",
+                      style: Theme.of(context).textTheme.bodyLarge!.merge(
+                            const TextStyle(
+                              fontWeight: FontWeight.w700,
+                              color: Color(0xFF474747),
+                            ),
+                          ),
+                    ),
+                    const SizedBox(
+                      height: 8.0,
+                    ),
+                    Wrap(
+                      children: [
+                        Row(
+                          children: [
+                            Icon(
+                              Icons.star,
+                              color: Color(0xFFdaa520),
+                            ),
+                            Text(
+                              "${gridMap.elementAt(index)['type']}",
+                              style:
+                                  Theme.of(context).textTheme.bodyLarge!.merge(
+                                        TextStyle(
+                                          fontWeight: FontWeight.w600,
+                                          color: Color(0xFF474747),
+                                        ),
+                                      ),
+                            ),
+                          ],
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(top: 2.0),
+                          child: Row(
+                            children: [
+                              Icon(
+                                Icons.pin_drop_rounded,
+                                color: Color(0xFF47B67E),
+                              ),
+                              Text(
+                                "${gridMap.elementAt(index)['km']}",
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .bodyLarge!
+                                    .merge(
+                                      TextStyle(
+                                        fontWeight: FontWeight.w600,
+                                        color: Color(0xFF474747),
+                                      ),
+                                    ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        );
+      },
+    );
+  }
 }
