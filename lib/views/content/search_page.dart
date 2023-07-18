@@ -40,30 +40,80 @@ class _SearchPageState extends State<SearchPage> {
       "type": " 5,0 · Brasileira · 5,7 km",
       "images": 'assets/images/vermelho.png'
     },
+    {
+      "title": "Restaurante XYZ",
+      "type": " 4,7 · Cozinha Variada · 3,5 km",
+      "images": "assets/images/amarelo.png",
+    },
+    {
+      "title": "Pizza Deliciosa",
+      "type": " 4,9 · Pizzaria · 2,0 km",
+      "images": "assets/images/laranja.png"
+    },
+    {
+      "title": "Comida Caseira",
+      "type": " 4,2 · Brasileira · 1,8 km",
+      "images": 'assets/images/rosa.png'
+    },
+    {
+      "title": "Lanches Rápidos",
+      "type": " 4,5 · Fast-Food · 4,3 km",
+      "images": 'assets/images/roxo.png'
+    },
+    {
+      "title": "Sushi Bar",
+      "type": " 4,8 · Japonesa · 5,2 km",
+      "images": 'assets/images/verde.png'
+    },
+    {
+      "title": "Cafeteria Aconchegante",
+      "type": " 4,3 · Cafeteria · 2,7 km",
+      "images": 'assets/images/vermelho.png'
+    },
+    {
+      "title": "Restaurante Italiano",
+      "type": " 4,6 · Italiana · 4,7 km",
+      "images": 'assets/images/amarelo.png',
+    },
+    {
+      "title": "Churrascaria Gaucho",
+      "type": " 4,4 · Churrascaria · 3,2 km",
+      "images": 'assets/images/laranja.png',
+    },
   ];
 
-  // List<StoreModel> display_list = List.from(gridMap);
+  List<Map<String, dynamic>> storesMap = [];
 
-  // void updateList(String value) {
-  //   setState(() {
-  //     gridMap.where((element) => element.title!.toLowerCase)
-  //   });
-  // }
+  void updateList(String value) {
+    setState(() {
+      storesMap = gridMap
+          .where((element) =>
+              (element['title'] as String).toLowerCase().contains(value))
+          .toList();
+    });
+  }
+
+  @override
+  void initState() {
+    storesMap = gridMap;
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
-        padding: EdgeInsets.all(16),
+      body: SafeArea(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SizedBox(height: 8.0),
             TextField(
+              onChanged: (value) => updateList(value),
               style: TextStyle(
                 color: Color(0xFF474747),
               ),
+              cursorColor: Color(0xFF47B67E),
               decoration: InputDecoration(
                 filled: true,
                 fillColor: Color.fromARGB(255, 245, 244, 244),
@@ -77,29 +127,55 @@ class _SearchPageState extends State<SearchPage> {
                 ),
               ),
             ),
-            SizedBox(height: 20.0),
+            SizedBox(height: 8.0),
             Expanded(
-              child: ListView.builder(
-                itemCount: gridMap.length,
-                itemBuilder: (context, index) => ListTile(
-                  contentPadding: EdgeInsets.all(8.0),
-                  title: Text(
-                    "${gridMap.elementAt(index)['title']}",
-                    style: TextStyle(
-                      color: Color(0xFF474747),
-                      fontWeight: FontWeight.w700,
+              child: storesMap == 0
+                  ? Center(
+                      child: Text(
+                        "Nenhum resultado encontrado!",
+                        style: TextStyle(
+                            color: Color(0xFF474747),
+                            fontSize: 22.0,
+                            fontWeight: FontWeight.bold),
+                      ),
+                    )
+                  : ListView.builder(
+                      itemCount: storesMap.length,
+                      itemBuilder: (context, index) => Container(
+                        decoration: BoxDecoration(
+                          border: Border(
+                            bottom: BorderSide(
+                              color: Color(0xff474747),
+                              width: 1.0,
+                            ),
+                          ),
+                        ),
+                        child: ListTile(
+                          contentPadding: EdgeInsets.all(8.0),
+                          tileColor: Color.fromARGB(255, 245, 244, 244),
+                          title: Text(
+                            "${storesMap.elementAt(index)['title']}",
+                            style: TextStyle(
+                              color: Color(0xFF474747),
+                              fontWeight: FontWeight.w700,
+                            ),
+                          ),
+                          subtitle: Text(
+                            "${storesMap.elementAt(index)['type']}",
+                            style: TextStyle(
+                              fontWeight: FontWeight.w600,
+                              color: Color(0xFF474747),
+                            ),
+                          ),
+                          leading: ClipRRect(
+                            borderRadius: BorderRadius.circular(10.0),
+                            child: Image.asset(
+                              "${storesMap.elementAt(index)['images']}",
+                            ),
+                          ),
+                        ),
+                      ),
                     ),
-                  ),
-                  subtitle: Text(
-                    "${gridMap.elementAt(index)['type']}",
-                    style: TextStyle(
-                      fontWeight: FontWeight.w600,
-                      color: Color(0xFF474747),
-                    ),
-                  ),
-                  leading: Image.asset("${gridMap.elementAt(index)['images']}"),
-                ),
-              ),
             ),
           ],
         ),

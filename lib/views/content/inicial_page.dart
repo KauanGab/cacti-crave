@@ -1,19 +1,20 @@
-import 'package:flutter/cupertino.dart';
+import 'package:cacti_crave/views/content/notify_page.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
 final List<String> imgLists = [
-  'assets/images/banner1.jpeg',
-  'assets/images/banner2.jpeg',
-  'assets/images/banner3.jpeg',
-  'assets/images/banner4.jpeg',
+  'assets/images/banners/banner1.png',
+  'assets/images/banners/banner2.png',
+  'assets/images/banners/banner3.png',
+  'assets/images/banners/banner4.png',
+  'assets/images/banners/banner5.png',
 ];
 
 final List<String> listStores = [
-  'assets/images/samec.png',
-  'assets/images/bianca.png',
-  'assets/images/jsilva.png',
-  'assets/images/santana.png',
+  'assets/images/lojas/samec.png',
+  'assets/images/lojas/bianca.png',
+  'assets/images/lojas/santana.png',
+  'assets/images/lojas/jsilva.png',
 ];
 
 class InicialPage extends StatefulWidget {
@@ -26,111 +27,119 @@ class InicialPage extends StatefulWidget {
 class _InicialPageState extends State<InicialPage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Column(
-              children: [
-                SizedBox(
-                  height: MediaQuery.of(context).padding.top,
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(
-                      horizontal: 16.0, vertical: 8.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Row(
-                        children: [
-                          Text('R.São Cristóvão, 10'),
-                          Icon(
-                            Icons.arrow_drop_down_sharp,
+    return SafeArea(
+      child: Scaffold(
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 16.0, vertical: 6.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Row(
+                          children: [
+                            Text('R.São Cristóvão, 10'),
+                            Icon(
+                              Icons.arrow_drop_down_sharp,
+                              color: Color(0xFF47B67E),
+                            ),
+                          ],
+                        ),
+                        IconButton(
+                          icon: Icon(
+                            Icons.notifications_none_sharp,
                             color: Color(0xFF47B67E),
                           ),
-                        ],
-                      ),
-                      Icon(
-                        Icons.notifications_none_sharp,
-                        color: Color(0xFF47B67E),
-                      ),
-                    ],
-                  ),
-                ),
-                SizedBox(height: 16.0),
-                CarouselSlider.builder(
-                  options: CarouselOptions(
-                    height: 150.0,
-                    // aspectRatio: 16 / 9,
-                    viewportFraction: 0.8,
-                  ),
-                  itemCount: imgLists.length,
-                  itemBuilder: (context, index, realIndex) {
-                    final imglist = imgLists[index];
-
-                    return buildImage(imglist, index);
-                  },
-                ),
-                SizedBox(height: 16.0),
-                Padding(
-                  padding: const EdgeInsets.only(
-                      left: 16.0, right: 16.0, top: 8.0, bottom: 5.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Row(
-                        children: [
-                          Text(
-                            'Últimas lojas',
-                            style: TextStyle(
-                              fontSize: 20.0,
-                              fontWeight: FontWeight.w500,
-                            ),
-                          ),
-                        ],
-                      ),
-                      Text(
-                        'Ver Mais',
-                        style: TextStyle(
-                          fontSize: 14.0,
-                          fontWeight: FontWeight.w400,
-                          color: Color(0xFF47B67E),
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => NotifyPage()),
+                            );
+                          },
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 16.0, bottom: 8.0),
-                  child: SizedBox(
-                    height: 75,
-                    child: ListView.builder(
-                      itemCount: listStores.length,
-                      scrollDirection: Axis.horizontal,
-                      itemBuilder: (context, index) => SizedBox(
-                        // height: 60,
-                        // width: 111,
-                        child: Image.asset(
-                          listStores[index],
+                  SizedBox(height: 10.0),
+                  CarouselSlider.builder(
+                    options: CarouselOptions(
+                      height: 150.0,
+                      // aspectRatio: 16 / 9,
+                      viewportFraction: 0.8,
+                    ),
+                    itemCount: imgLists.length,
+                    itemBuilder: (context, index, realIndex) {
+                      final imglist = imgLists[index];
+
+                      return buildImage(imglist, index);
+                    },
+                  ),
+                  SizedBox(height: 16.0),
+                  Padding(
+                    padding: const EdgeInsets.only(
+                        left: 16.0, right: 16.0, top: 8.0, bottom: 5.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Row(
+                          children: [
+                            Text(
+                              'Últimas lojas',
+                              style: TextStyle(
+                                fontSize: 20.0,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                          ],
+                        ),
+                        Text(
+                          'Ver Mais',
+                          style: TextStyle(
+                            fontSize: 14.0,
+                            fontWeight: FontWeight.w400,
+                            color: Color(0xFF47B67E),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 16.0, bottom: 8.0),
+                    child: SizedBox(
+                      height: 85,
+                      child: ListView.builder(
+                        itemCount: listStores.length,
+                        scrollDirection: Axis.horizontal,
+                        itemBuilder: (context, index) => SizedBox(
+                          // height: 60,
+                          // width: 111,
+                          child: Image.asset(
+                            listStores[index],
+                          ),
                         ),
                       ),
                     ),
                   ),
-                ),
-                Text(
-                  'Lojas',
-                  style: TextStyle(
-                    fontSize: 24.0,
-                    fontWeight: FontWeight.w500,
+                  Text(
+                    'Lojas',
+                    style: TextStyle(
+                      fontSize: 24.0,
+                      fontWeight: FontWeight.w500,
+                    ),
                   ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: GridB(),
-                ),
-              ],
-            ),
-          ],
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: GridB(),
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );
