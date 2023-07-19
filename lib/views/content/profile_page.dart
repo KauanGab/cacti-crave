@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
+import 'notify_page.dart';
+
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
 
@@ -49,7 +51,12 @@ class _ProfilePageState extends State<ProfilePage> {
               ProfileMenu(
                 icon: "assets/icons/new/notification.svg",
                 text: 'Notificações',
-                press: () {},
+                press: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => NotifyPage()),
+                  );
+                },
               ),
               ProfileMenu(
                 icon: "assets/icons/new/config.svg",
