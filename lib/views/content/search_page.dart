@@ -88,7 +88,8 @@ class _SearchPageState extends State<SearchPage> {
     setState(() {
       storesMap = gridMap
           .where((element) =>
-              (element['title'] as String).toLowerCase().contains(value))
+              (element['title'] as String).toLowerCase().contains(value) ||
+              (element['type'] as String).toLowerCase().contains(value))
           .toList();
     });
   }
@@ -126,17 +127,18 @@ class _SearchPageState extends State<SearchPage> {
                   color: Color(0xFF47B67E),
                 ),
               ),
+            
             ),
             SizedBox(height: 8.0),
             Expanded(
-              child: storesMap == 0
+              child: storesMap.length == 0
                   ? Center(
                       child: Text(
                         "Nenhum resultado encontrado!",
                         style: TextStyle(
                             color: Color(0xFF474747),
-                            fontSize: 22.0,
-                            fontWeight: FontWeight.bold),
+                            fontSize: 18.0,
+                            fontWeight: FontWeight.w600),
                       ),
                     )
                   : ListView.builder(

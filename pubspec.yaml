@@ -65,6 +65,7 @@ flutter_native_splash:
 flutter:
   assets:
     - "assets/icons/"
+    - "assets/icons/new/"
     - "assets/icons/bottom/"
     - "assets/icons/ordenation/"
     - "assets/images/"
