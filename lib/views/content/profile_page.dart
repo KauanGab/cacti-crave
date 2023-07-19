@@ -1,6 +1,7 @@
+import 'package:cacti_crave/views/content/about_page.dart';
+import 'package:cacti_crave/views/content/mydata_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-
 import 'notify_page.dart';
 
 class ProfilePage extends StatefulWidget {
@@ -20,10 +21,18 @@ class _ProfilePageState extends State<ProfilePage> {
           title: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Image.asset('assets/images/logo-sn.png', width: 25, height: 25),
+              SvgPicture.asset(
+                "assets/icons/new/logo-sn.svg",
+                width: 25,
+                height: 25,
+              ),
               Text('Pedro Carvalho',
                   style: TextStyle(fontWeight: FontWeight.w500)),
-              Image.asset('assets/images/logo-sn.png', width: 25, height: 25),
+              SvgPicture.asset(
+                "assets/icons/new/logo-sn.svg",
+                width: 25,
+                height: 25,
+              ),
             ],
           ),
         ),
@@ -44,12 +53,17 @@ class _ProfilePageState extends State<ProfilePage> {
                 height: 20,
               ),
               ProfileMenu(
-                icon: "assets/icons/new/data.svg",
+                icon: Icons.article_outlined,
                 text: 'Meus dados',
-                press: () {},
+                press: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => mydata()),
+                  );
+                },
               ),
               ProfileMenu(
-                icon: "assets/icons/new/notification.svg",
+                icon: Icons.notifications,
                 text: 'Notificações',
                 press: () {
                   Navigator.push(
@@ -59,20 +73,25 @@ class _ProfilePageState extends State<ProfilePage> {
                 },
               ),
               ProfileMenu(
-                icon: "assets/icons/new/config.svg",
+                icon: Icons.settings,
                 text: 'Configurações',
                 press: () {},
               ),
-              // ProfileMenu(
-              //   icon: "assets/icons/new/helping.svg",
-              //   text: 'Ajuda',
-              //   press: () {},
-              // ),
-              // ProfileMenu(
-              //   icon: "assets/icons/new/about.svg",
-              //   text: 'Sobre',
-              //   press: () {},
-              // ),
+              ProfileMenu(
+                icon: Icons.question_mark,
+                text: 'Ajuda',
+                press: () {},
+              ),
+              ProfileMenu(
+                icon: Icons.info_outline,
+                text: 'Sobre',
+                press: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => abouting()),
+                  );
+                },
+              ),
             ],
           ),
         ),
@@ -84,12 +103,13 @@ class _ProfilePageState extends State<ProfilePage> {
 class ProfileMenu extends StatelessWidget {
   const ProfileMenu({
     super.key,
-    required this.text,
     required this.icon,
+    required this.text,
     required this.press,
   });
 
-  final String text, icon;
+  final IconData icon;
+  final String text;
   final VoidCallback press;
 
   @override
@@ -109,10 +129,10 @@ class ProfileMenu extends StatelessWidget {
           onPressed: press,
           child: Row(
             children: [
-              SvgPicture.asset(
+              Icon(
                 icon,
-                width: 20,
                 color: Color(0xFF47B67E),
+                weight: 10,
               ),
               SizedBox(
                 width: 22,
