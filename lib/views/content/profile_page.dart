@@ -13,7 +13,6 @@ class _ProfilePageState extends State<ProfilePage> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        
         appBar: AppBar(
           backgroundColor: Color.fromARGB(255, 245, 244, 244),
           title: Row(
@@ -43,8 +42,8 @@ class _ProfilePageState extends State<ProfilePage> {
                 height: 20,
               ),
               ProfileMenu(
-                icon: "assets/icons/new/profile.svg",
-                text: 'Meu Perfil',
+                icon: "assets/icons/new/data.svg",
+                text: 'Meus dados',
                 press: () {},
               ),
               ProfileMenu(

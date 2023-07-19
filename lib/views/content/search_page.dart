@@ -127,18 +127,36 @@ class _SearchPageState extends State<SearchPage> {
                   color: Color(0xFF47B67E),
                 ),
               ),
-            
             ),
             SizedBox(height: 8.0),
             Expanded(
               child: storesMap.length == 0
                   ? Center(
-                      child: Text(
-                        "Nenhum resultado encontrado!",
-                        style: TextStyle(
-                            color: Color(0xFF474747),
-                            fontSize: 18.0,
-                            fontWeight: FontWeight.w600),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Image.asset(
+                            "assets/images/nofound.png",
+                            height: 150,
+                            width: 150,
+                          ),
+                          SizedBox(height: 5.0),
+                          Text(
+                            "Nenhum resultado encontrado!",
+                            style: TextStyle(
+                                color: Color(0xFF474747),
+                                fontSize: 18.0,
+                                fontWeight: FontWeight.w600),
+                          ),
+                          SizedBox(height: 3.0),
+                          Text(
+                            "Tente utilizar palavras-chave ou mais genéricas.",
+                            style: TextStyle(
+                                color: Color(0xFF474747),
+                                fontSize: 13.0,
+                                fontWeight: FontWeight.w500),
+                          )
+                        ],
                       ),
                     )
                   : ListView.builder(
