@@ -1,5 +1,7 @@
 import 'package:cacti_crave/views/content/about_page.dart';
+import 'package:cacti_crave/views/content/help_page.dart';
 import 'package:cacti_crave/views/content/mydata_page.dart';
+import 'package:cacti_crave/views/content/settings_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'notify_page.dart';
@@ -75,12 +77,22 @@ class _ProfilePageState extends State<ProfilePage> {
               ProfileMenu(
                 icon: Icons.settings,
                 text: 'Configurações',
-                press: () {},
+                press: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => settings()),
+                  );
+                },
               ),
               ProfileMenu(
                 icon: Icons.question_mark,
                 text: 'Ajuda',
-                press: () {},
+                press: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => help()),
+                  );
+                },
               ),
               ProfileMenu(
                 icon: Icons.info_outline,

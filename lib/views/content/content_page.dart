@@ -2,6 +2,7 @@ import 'package:cacti_crave/views/content/inicial_page.dart';
 import 'package:cacti_crave/views/content/profile_page.dart';
 import 'package:cacti_crave/views/content/search_page.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class ContentPage extends StatefulWidget {
   const ContentPage({super.key});
@@ -18,6 +19,7 @@ class _ContentPageState extends State<ContentPage> {
   void initState() {
     super.initState();
     pc = PageController(initialPage: paginaAtual);
+    SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   }
 
   setPaginaAtual(pagina) {
