@@ -1,6 +1,7 @@
+import 'package:cacti_crave/themes/dark_theme.dart';
+import 'package:cacti_crave/themes/light_theme.dart';
 import 'package:cacti_crave/views/content/content_page.dart';
 import 'package:flutter/material.dart';
-
 
 class App extends StatelessWidget {
   const App({super.key});
@@ -11,10 +12,8 @@ class App extends StatelessWidget {
     return MaterialApp(
       title: 'CactiCrave',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Color.fromARGB(255, 95, 92, 92)),
-        useMaterial3: true,
-      ),
+      theme: lightheme,
+      darkTheme: darktheme,
       home: ContentPage(),
     );
   }

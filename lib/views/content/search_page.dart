@@ -112,12 +112,12 @@ class _SearchPageState extends State<SearchPage> {
             TextField(
               onChanged: (value) => updateList(value),
               style: TextStyle(
-                color: Color(0xFF474747),
+                color: Theme.of(context).colorScheme.secondary,
               ),
               cursorColor: Color(0xFF47B67E),
               decoration: InputDecoration(
                 filled: true,
-                fillColor: Color.fromARGB(255, 245, 244, 244),
+                fillColor: Theme.of(context).colorScheme.primary,
                 border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(6.0),
                     borderSide: BorderSide.none),
@@ -144,7 +144,7 @@ class _SearchPageState extends State<SearchPage> {
                           Text(
                             "Nenhum resultado encontrado!",
                             style: TextStyle(
-                                color: Color(0xFF474747),
+                                color: Theme.of(context).colorScheme.secondary,
                                 fontSize: 18.0,
                                 fontWeight: FontWeight.w600),
                           ),
@@ -152,7 +152,7 @@ class _SearchPageState extends State<SearchPage> {
                           Text(
                             "Tente utilizar palavras-chave ou mais genéricas.",
                             style: TextStyle(
-                                color: Color(0xFF474747),
+                                color: Theme.of(context).colorScheme.secondary,
                                 fontSize: 13.0,
                                 fontWeight: FontWeight.w500),
                           )
@@ -165,18 +165,18 @@ class _SearchPageState extends State<SearchPage> {
                         decoration: BoxDecoration(
                           border: Border(
                             bottom: BorderSide(
-                              color: Color(0xff474747),
+                              color: Theme.of(context).colorScheme.secondary,
                               width: 1.0,
                             ),
                           ),
                         ),
                         child: ListTile(
                           contentPadding: EdgeInsets.all(8.0),
-                          tileColor: Color.fromARGB(255, 245, 244, 244),
+                          tileColor: Theme.of(context).colorScheme.primary,
                           title: Text(
                             "${storesMap.elementAt(index)['title']}",
                             style: TextStyle(
-                              color: Color(0xFF474747),
+                              color: Theme.of(context).colorScheme.secondary,
                               fontWeight: FontWeight.w700,
                             ),
                           ),
@@ -184,7 +184,7 @@ class _SearchPageState extends State<SearchPage> {
                             "${storesMap.elementAt(index)['type']}",
                             style: TextStyle(
                               fontWeight: FontWeight.w600,
-                              color: Color(0xFF474747),
+                              color: Theme.of(context).colorScheme.secondary,
                             ),
                           ),
                           leading: ClipRRect(

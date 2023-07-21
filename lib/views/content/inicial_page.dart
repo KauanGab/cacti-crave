@@ -222,7 +222,7 @@ class _GridBState extends State<GridB> {
             borderRadius: BorderRadius.circular(
               16.0,
             ),
-            color: Color.fromARGB(255, 245, 244, 244),
+            color: Theme.of(context).colorScheme.primary,
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -270,7 +270,9 @@ class _GridBState extends State<GridB> {
                                   Theme.of(context).textTheme.bodyLarge!.merge(
                                         TextStyle(
                                           fontWeight: FontWeight.w600,
-                                          color: Color(0xFF474747),
+                                          color: Theme.of(context)
+                                              .colorScheme
+                                              .secondary,
                                         ),
                                       ),
                             ),
@@ -292,7 +294,9 @@ class _GridBState extends State<GridB> {
                                     .merge(
                                       TextStyle(
                                         fontWeight: FontWeight.w600,
-                                        color: Color(0xFF474747),
+                                        color: Theme.of(context)
+                                            .colorScheme
+                                            .secondary,
                                       ),
                                     ),
                               ),

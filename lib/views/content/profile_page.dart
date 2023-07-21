@@ -19,7 +19,7 @@ class _ProfilePageState extends State<ProfilePage> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          backgroundColor: Color.fromARGB(255, 245, 244, 244),
+          backgroundColor: Theme.of(context).colorScheme.primary,
           title: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -27,13 +27,17 @@ class _ProfilePageState extends State<ProfilePage> {
                 "assets/icons/new/logo-sn.svg",
                 width: 25,
                 height: 25,
+                color: Theme.of(context).colorScheme.secondary,
               ),
               Text('Pedro Carvalho',
-                  style: TextStyle(fontWeight: FontWeight.w500)),
+                  style: TextStyle(
+                      fontWeight: FontWeight.w500,
+                      color: Theme.of(context).colorScheme.secondary)),
               SvgPicture.asset(
                 "assets/icons/new/logo-sn.svg",
                 width: 25,
                 height: 25,
+                color: Theme.of(context).colorScheme.secondary,
               ),
             ],
           ),
@@ -133,7 +137,7 @@ class ProfileMenu extends StatelessWidget {
         child: TextButton(
           style: TextButton.styleFrom(
             primary: Color(0xFF47B67E),
-            backgroundColor: Color.fromARGB(255, 245, 244, 244),
+            backgroundColor: Theme.of(context).colorScheme.primary,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(10),
             ),
@@ -152,7 +156,9 @@ class ProfileMenu extends StatelessWidget {
               Expanded(
                 child: Text(
                   text,
-                  style: TextStyle(color: Color.fromARGB(255, 114, 113, 113)),
+                  style: TextStyle(
+                    color: Theme.of(context).colorScheme.secondary,
+                  ),
                 ),
               ),
               Icon(Icons.arrow_forward_ios)

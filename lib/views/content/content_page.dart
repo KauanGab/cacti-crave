@@ -37,7 +37,7 @@ class _ContentPageState extends State<ContentPage> {
         onPageChanged: setPaginaAtual,
       ),
       bottomNavigationBar: BottomNavigationBar(
-        unselectedItemColor: Color(0xFF474747),
+        unselectedItemColor: Theme.of(context).colorScheme.secondary,
         selectedItemColor: Color(0xFF47B67E),
         currentIndex: paginaAtual,
         items: [
