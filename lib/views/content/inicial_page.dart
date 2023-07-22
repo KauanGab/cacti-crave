@@ -247,9 +247,9 @@ class _GridBState extends State<GridB> {
                     Text(
                       "${gridMap.elementAt(index)['title']}",
                       style: Theme.of(context).textTheme.bodyLarge!.merge(
-                            const TextStyle(
+                            TextStyle(
                               fontWeight: FontWeight.w700,
-                              color: Color(0xFF474747),
+                              color: Theme.of(context).colorScheme.secondary,
                             ),
                           ),
                     ),
