@@ -10,13 +10,13 @@ class abouting extends StatefulWidget {
 class _aboutingState extends State<abouting> {
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        appBar: AppBar(
-          title: Text('Sobre'),
-          backgroundColor: Color(0xFF47B67E),
-        ),
-        body: Container(
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Sobre'),
+        backgroundColor: Color(0xFF47B67E),
+      ),
+      body: SafeArea(
+        child: Container(
           child: Padding(
             padding:
                 const EdgeInsets.symmetric(horizontal: 10.0, vertical: 25.0),

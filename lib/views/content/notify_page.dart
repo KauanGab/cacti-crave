@@ -10,13 +10,13 @@ class NotifyPage extends StatefulWidget {
 class _NotifyPageState extends State<NotifyPage> {
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        appBar: AppBar(
-          title: Text('Notificações'),
-          backgroundColor: Color(0xFF47B67E),
-        ),
-        body: Container(
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Notificações'),
+        backgroundColor: Color(0xFF47B67E),
+      ),
+      body: SafeArea(
+        child: Container(
           alignment: Alignment.bottomCenter,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,

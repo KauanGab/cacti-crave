@@ -10,13 +10,13 @@ class help extends StatefulWidget {
 class _helpState extends State<help> {
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        appBar: AppBar(
-          title: Text('Ajuda'),
-          backgroundColor: Color(0xFF47B67E),
-        ),
-        body: Container(
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Ajuda'),
+        backgroundColor: Color(0xFF47B67E),
+      ),
+      body: SafeArea(
+        child: Container(
           child: Padding(
             padding:
                 const EdgeInsets.symmetric(horizontal: 10.0, vertical: 25.0),

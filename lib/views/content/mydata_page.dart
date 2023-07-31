@@ -10,13 +10,13 @@ class mydata extends StatefulWidget {
 class _mydataState extends State<mydata> {
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        appBar: AppBar(
-          title: Text('Meus dados'),
-          backgroundColor: Color(0xFF47B67E),
-        ),
-        body: SingleChildScrollView(
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Meus dados'),
+        backgroundColor: Color(0xFF47B67E),
+      ),
+      body: SafeArea(
+        child: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.only(top: 16.0),
             child: Column(
